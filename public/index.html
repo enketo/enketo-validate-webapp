@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Interface for Enketo Validate</title>
+        <link rel="stylesheet" media="all" href="/style.css"/>
+        <script src="/script.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <h1>XForm Validators for the ODK ecosystem</h1>
+            <form id="upload-form" action="/validate" onsubmit="return false;">
+                <input id="file" name="xform" type="file" />
+                <button id="submit" type="submit" disabled>validate</button>
+                <div class="loader"></div>
+            </form>
+            <div class="result">
+                <section class="result__enketo">
+                    <h3>Enketo Validation Result</h3>
+                    <pre class="result__enketo__content"></pre>
+                </section>
+                <section class="result__odk">
+                    <h3>ODK Validation Result</h3>
+                    <pre class="result__odk__content"></pre>
+                </section>
+            </div>
+        </div>
+    </body>
+</html>

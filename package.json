@@ -1,0 +1,32 @@
+{
+    "name": "enketo-validate-webapp",
+    "version": "1.0.0",
+    "description": "A web interface for enketo validate, and ODK XForm validator",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/enketo/enketo-validate-webapp.git"
+    },
+    "keywords": [
+        "Enketo",
+        "ODK",
+        "XForm",
+        "validator"
+    ],
+    "author": "Martijn van de Rijdt",
+    "license": "Apache-2.0",
+    "bugs": {
+        "url": "https://github.com/enketo/enketo-validate-webapp/issues"
+    },
+    "homepage": "https://github.com/enketo/enketo-validate-webapp#readme",
+    "dependencies": {
+        "connect": "^3.6.5",
+        "connect-busboy": "0.0.2",
+        "enketo-validate": "1.0.0",
+        "serve-static": "^1.13.1",
+        "tmp": "0.0.33"
+    }
+}

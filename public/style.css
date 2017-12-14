@@ -1,0 +1,99 @@
+body{
+    font-family: arial;
+}
+
+#main{
+    margin: 20px 0;
+}
+
+#main h1{
+    text-align: center;
+}
+
+#upload-form {
+    position: relative;
+    text-align: center;
+}
+
+#upload-form.busy .loader:before {
+    display: block;
+}
+
+#upload-form input[type="file"], #upload-form button{
+    display: inline-block;
+    border-radius: 5px;
+    padding: 7px;
+    vertical-align: bottom;
+    margin: 0 5px;
+}
+
+#upload-form input[type="file"]{
+    width: 300px;
+    border: 1px solid #03a9f4;
+}
+
+button{
+    border: 1px solid #2196f3;
+    background-color: #2196f3;
+    font-size: 16px;
+    color: white;
+}
+
+button:not(:disabled):hover{
+    opacity: 0.8;
+}
+
+button:disabled{
+    opacity: 0.4;
+}
+
+.result{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.result__enketo, .result__odk{
+    flex: 1;
+    margin:5px;
+    border: 2px solid grey;
+    max-width: 50%;
+    min-width: 320px;
+    min-height: 100px;
+    padding: 10px;
+}
+
+.valid{
+    border-color: green;
+}
+
+.invalid{
+    border-color: red;
+}
+
+pre {
+    white-space: pre-wrap; 
+    word-break: break-all;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ 
+.loader:before {
+  display: none;
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spinner .4s linear infinite;
+}
