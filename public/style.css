@@ -58,7 +58,6 @@ button:disabled{
     flex: 1;
     margin:5px;
     border: 2px solid grey;
-    max-width: 50%;
     min-width: 320px;
     min-height: 100px;
     padding: 10px;
