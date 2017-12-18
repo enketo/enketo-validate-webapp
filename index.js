@@ -26,10 +26,7 @@ app.use( '/validate', ( req, res, next ) => {
                 .setEncoding( 'utf8' );
         } );
         req.busboy.on( 'finish', () => {
-            let s = Date.now();
             enketo = enketoValidator.validate( xform );
-            let e = Date.now();
-            enketo.duration = e - s;
             odkValidator.validate( xform )
                 .then( o => odk = o )
                 .catch( e => {
@@ -37,7 +34,6 @@ app.use( '/validate', ( req, res, next ) => {
                     odk.errors = [ e ];
                 } )
                 .then( () => {
-                    odk.duration = Date.now() - e;
                     res.writeHead( 200, { 'Content-Type': 'application/json' } );
                     res.write( JSON.stringify( { enketo, odk } ) );
                     res.end();
