@@ -8,6 +8,13 @@ body{
 
 #main h1{
     text-align: center;
+    color: hsl(207, 90%, 34%);
+}
+
+#main h3 {
+  margin-top: 5px;
+  text-align: center;
+  color: hsl(207, 90%, 34%);
 }
 
 #upload-form {
@@ -33,8 +40,8 @@ body{
 }
 
 button{
-    border: 1px solid #2196f3;
-    background-color: #2196f3;
+    border: 1px solid hsl(207, 90%, 54%);
+    background-color: hsl(207, 90%, 54%);
     font-size: 16px;
     color: white;
 }
@@ -56,10 +63,10 @@ button:disabled{
 
 .result__enketo, .result__odk{
     flex: 1;
-    margin:5px;
+    margin: 5px;
     border: 2px solid grey;
     min-width: 320px;
-    min-height: 100px;
+    min-height: 300px;
     padding: 10px;
 }
 
