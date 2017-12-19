@@ -16,7 +16,11 @@ function _runODKValidateJar( xformPath ) {
             let errors = [];
             let messages = _cleanupErrors( stderr );
             if ( error ) {
-                errors = messages;
+                if ( messages.length ) {
+                    errors = messages;
+                } else {
+                    errors = [ error.message || 'An unknown error occurred while running ODK Validate' ];
+                }
             } else {
                 warnings = messages;
             }
