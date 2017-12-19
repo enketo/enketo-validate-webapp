@@ -48,32 +48,13 @@ function _saveTmpFile( xform ) {
 }
 
 /**
- * Ported from pyxform, though not checked for errors.
+ * Partially ported from pyxform, though not checked for errors.
+ * Excludes xlsform-specific syntax changes of /data/to/node to ${node}
  * 
  * @param  {string} error_message stderr output from ODK Validate
  * @return {<string>}             array of cleanup output lines
  */
 function _cleanupErrors( error_message ) {
-
-    function get_last_item( xpath_str ) {
-        let l = xpath_str.split( '/' );
-        return l[ l.length - 1 ];
-    }
-
-    function replace_function( match, strmatch ) {
-        // eliminate e.g /html/body/select1[@ref = /id_string/elId]/item/value
-        // instance('q4')/root/item[ ... ]
-        if ( strmatch.startsWith( '/html/body' ) || strmatch.startsWith( '/root/item' ) || strmatch.startsWith( '/html/head/model/bind' ) || strmatch.endsWith( '/item/value' ) ) {
-            return strmatch;
-        }
-
-        return `\$\{${get_last_item(strmatch)}\}`;
-    }
-
-    const pattern = /(\/[a-z0-9\-_]+(?:\/[a-z0-9\-_]+)+)/gi;
-
-    error_message = error_message.replace( pattern, replace_function );
-
     let k = [];
     let lastline = '';
 
