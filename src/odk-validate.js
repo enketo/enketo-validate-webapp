@@ -10,8 +10,8 @@ function validate( xform ) {
 }
 
 function _runODKValidateJar( xformPath ) {
-    return new Promise( ( resolve, reject ) => {
-        execFile( 'java', [ '-jar', 'lib/ODK_Validate_1.7.0.jar', xformPath ], ( error, stdout, stderr ) => {
+    return new Promise( ( resolve ) => {
+        execFile( 'java', [ '-jar', 'lib/ODK-Validate-v1.9.0.jar', xformPath ], ( error, stdout, stderr ) => {
             let warnings = [];
             let errors = [];
             let messages = _cleanupErrors( stderr );
