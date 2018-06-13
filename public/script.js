@@ -6,7 +6,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
     document.querySelector( '#file' ).onchange = disenable;
 } );
 
-
 function disenable( evt ) {
     var file = evt.target.files[ 0 ];
     document.querySelector( '#submit' ).disabled = !file;
@@ -49,19 +48,20 @@ function handleResponse( response ) {
     enketo.result = createMessage( enketo );
     odk.result = createMessage( odk );
 
-    renderResult( document.querySelector( '.result__enketo' ), enketo.errors, enketo.result );
-    renderResult( document.querySelector( '.result__odk' ), odk.errors, odk.result );
+    renderResult( document.querySelector( '.result__enketo' ), enketo.errors, enketo.result, enketo.version );
+    renderResult( document.querySelector( '.result__odk' ), odk.errors, odk.result, odk.version );
 }
 
 function createMessage( result ) {
-    var message = result.warnings && result.warnings.length ? [ 'Warnings:' ].concat( result.warnings ).concat( '\n\n' ).join( '\n' ) : '';
+    var message = result.warnings && result.warnings.length ? [ 'Warnings:' ].concat( result.warnings ).concat( '\n\n' ).join( '\n\n' ) : '';
     message += result.errors && result.errors.length ? [ 'Errors:' ].concat( result.errors ).join( '\n\n' ) : '';
     return message;
 }
 
-function renderResult( el, errors, content ) {
+function renderResult( el, errors, content, version ) {
     var invalid = errors && errors.length;
     el.classList.remove( 'valid', 'invalid' );
     el.classList.add( invalid ? 'invalid' : 'valid' );
     el.querySelector( 'pre' ).textContent = content + ( invalid ? '' : 'XForm is valid!' );
+    el.querySelector( '.version' ).textContent = version ? ` (v${version})` : '';
 }

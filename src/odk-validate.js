@@ -3,6 +3,7 @@
 const execFile = require( 'child_process' ).execFile;
 const tmp = require( 'tmp' );
 const fs = require( 'fs' );
+const pkg = require( '../package.json' );
 
 function validate( xform ) {
     return _saveTmpFile( xform )
@@ -11,7 +12,7 @@ function validate( xform ) {
 
 function _runODKValidateJar( xformPath ) {
     return new Promise( ( resolve ) => {
-        execFile( 'java', [ '-jar', 'lib/ODK-Validate-v1.9.0.jar', xformPath ], ( error, stdout, stderr ) => {
+        execFile( 'java', [ '-jar', `lib/${pkg['ODK validate jar']}`, xformPath ], ( error, stdout, stderr ) => {
             let warnings = [];
             let errors = [];
             let messages = _cleanupErrors( stderr );
@@ -24,8 +25,10 @@ function _runODKValidateJar( xformPath ) {
             } else {
                 warnings = messages;
             }
+            const matches = pkg[ 'ODK validate jar' ].match( /[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}/ );
+            const version = matches.length ? matches[ 0 ] : '';
 
-            resolve( { warnings, errors } );
+            resolve( { warnings, errors, version } );
         } );
     } );
 }
