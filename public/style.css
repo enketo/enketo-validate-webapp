@@ -1,20 +1,23 @@
-body{
+body {
     font-family: arial;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-#main{
+#main {
     margin: 20px 0;
 }
 
-#main h1{
+#main h1 {
     text-align: center;
     color: hsl(207, 90%, 34%);
 }
 
 #main h3 {
-  margin-top: 5px;
-  text-align: center;
-  color: hsl(207, 90%, 34%);
+    margin-top: 5px;
+    text-align: center;
+    color: hsl(207, 90%, 34%);
 }
 
 #upload-form {
@@ -26,7 +29,8 @@ body{
     display: block;
 }
 
-#upload-form input[type="file"], #upload-form button{
+#upload-form input[type="file"],
+#upload-form button {
     display: inline-block;
     border-radius: 5px;
     padding: 7px;
@@ -34,34 +38,35 @@ body{
     margin: 0 5px;
 }
 
-#upload-form input[type="file"]{
+#upload-form input[type="file"] {
     width: 300px;
     border: 1px solid #03a9f4;
 }
 
-button{
+button {
     border: 1px solid hsl(207, 90%, 54%);
     background-color: hsl(207, 90%, 54%);
     font-size: 16px;
     color: white;
 }
 
-button:not(:disabled):hover{
+button:not(:disabled):hover {
     opacity: 0.8;
 }
 
-button:disabled{
+button:disabled {
     opacity: 0.4;
 }
 
-.result{
+.result {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 20px auto;
 }
 
-.result__enketo, .result__odk{
+.result__enketo,
+.result__odk {
     flex: 1;
     margin: 5px;
     border: 2px solid grey;
@@ -70,36 +75,45 @@ button:disabled{
     padding: 10px;
 }
 
-.valid{
+.valid {
     border-color: green;
 }
 
-.invalid{
+.invalid {
     border-color: red;
 }
 
 pre {
-    white-space: pre-wrap; 
+    white-space: pre-wrap;
     word-break: break-all;
 }
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+    to {
+        transform: rotate(360deg);
+    }
 }
- 
+
 .loader:before {
-  display: none;
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 20px;
-  height: 20px;
-  margin-top: -10px;
-  margin-left: -10px;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-  border-top-color: #333;
-  animation: spinner .4s linear infinite;
+    display: none;
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    border-top-color: #333;
+    animation: spinner .4s linear infinite;
+}
+
+footer {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1;
+    text-align: center;
 }
