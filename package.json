@@ -25,9 +25,9 @@
     "dependencies": {
         "connect": "^3.7.0",
         "connect-busboy": "0.0.2",
-        "enketo-validate": "^1.6.1",
+        "enketo-validate": "^1.7.0",
         "serve-static": "^1.14.1",
         "tmp": "0.0.33"
     },
-    "ODK validate jar": "ODK-Validate-v1.12.0.jar"
+    "ODK validate jar": "ODK-Validate-v1.13.1.jar"
 }
