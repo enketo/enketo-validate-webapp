@@ -1,22 +1,19 @@
-/* global document, window, console*/
-'use strict';
-
-document.addEventListener( 'DOMContentLoaded', function() {
+document.addEventListener( 'DOMContentLoaded', () => {
     document.querySelector( '#submit' ).onclick = submit;
     document.querySelector( '#file' ).onchange = disenable;
 } );
 
 function disenable( evt ) {
-    var file = evt.target.files[ 0 ];
+    const file = evt.target.files[ 0 ];
     document.querySelector( '#submit' ).disabled = !file;
 }
 
 function submit( evt ) {
-    var xhr;
-    var formData;
-    var form = evt.target.closest( 'form' );
-    var fileInput = form.querySelector( '#file' );
-    var file = fileInput.files[ 0 ];
+    let xhr;
+    let formData;
+    const form = evt.target.closest( 'form' );
+    const fileInput = form.querySelector( '#file' );
+    const file = fileInput.files[ 0 ];
 
     if ( file ) {
         xhr = new window.XMLHttpRequest();
@@ -24,11 +21,11 @@ function submit( evt ) {
         formData.append( fileInput.name, file );
         xhr.open( 'POST', form.action );
 
-        xhr.onload = function() {
+        xhr.onload = () => {
             if ( xhr.status === 200 ) {
                 handleResponse( xhr.response );
             } else if ( xhr.status !== 200 ) {
-                console.log( 'Request failed.  Returned status of ' + xhr.status );
+                console.log( `Request failed.  Returned status of ${xhr.status}` );
             }
             form.classList.remove( 'busy' );
         };
@@ -42,8 +39,8 @@ function submit( evt ) {
 }
 
 function handleResponse( response ) {
-    var enketo = response.enketo || {};
-    var odk = response.odk || {};
+    const enketo = response.enketo || {};
+    const odk = response.odk || {};
 
     enketo.result = createMessage( enketo );
     odk.result = createMessage( odk );
@@ -53,13 +50,19 @@ function handleResponse( response ) {
 }
 
 function createMessage( result ) {
-    var message = result.warnings && result.warnings.length ? [ 'Warnings:' ].concat( result.warnings ).concat( '\n\n' ).join( '\n\n' ) : '';
+    if ( !result ) {
+        return '';
+    }
+    let message = result.warnings && result.warnings.length ? [ 'Warnings:' ].concat( result.warnings ).concat( '\n\n' ).join( '\n\n' ) : '';
     message += result.errors && result.errors.length ? [ 'Errors:' ].concat( result.errors ).join( '\n\n' ) : '';
     return message;
 }
 
 function renderResult( el, errors, content, version ) {
-    var invalid = errors && errors.length;
+    if ( !el ) {
+        return;
+    }
+    const invalid = errors && errors.length;
     el.classList.remove( 'valid', 'invalid' );
     el.classList.add( invalid ? 'invalid' : 'valid' );
     el.querySelector( 'pre' ).textContent = content + ( invalid ? '' : 'XForm is valid!' );

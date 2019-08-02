@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Web Interface for Enketo Validate</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/enketo.ico">
+    <link rel="stylesheet" media="all" href="/style.css" />
+    <script src="/script.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Validate for OpenClinica</h1>
+        <form id="upload-form" action="/validate/oc" onsubmit="return false;">
+            <input id="file" name="xform" type="file" />
+            <button id="submit" type="submit" disabled>validate</button>
+            <div class="loader"></div>
+        </form>
+        <div class="result">
+            <section class="result__enketo">
+                <h3>Enketo Validation Result<span class="version"></span></h3>
+                <pre class="result__enketo__content"></pre>
+            </section>
+        </div>
+    </div>
+    <footer>
+        <a href="https://github.com/enketo/enketo-validate-webapp">GitHub</a>
+    </footer>
+</body>
+
+</html>

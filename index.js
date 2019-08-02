@@ -13,13 +13,13 @@ let app = connect();
 app.use( serveStatic( 'public' ) );
 app.use( busboy() );
 
-// Receive an XForm file and validate it
+// Receive an XForm file and validate it in both validators
 app.use( '/validate', ( req, res, next ) => {
     let enketo = {};
     let odk = {};
     let xform = '';
 
-    if ( req.busboy ) {
+    if ( req.busboy && req.url === '/' ) {
         req.busboy.on( 'file', ( fieldname, file ) => {
             file
                 .on( 'data', d => xform += d )
@@ -39,6 +39,19 @@ app.use( '/validate', ( req, res, next ) => {
                     res.end();
                 } );
 
+        } );
+        req.pipe( req.busboy );
+    } else if ( req.busboy && req.url === '/oc' ) {
+        req.busboy.on( 'file', ( fieldname, file ) => {
+            file
+                .on( 'data', d => xform += d )
+                .setEncoding( 'utf8' );
+        } );
+        req.busboy.on( 'finish', () => {
+            enketo = enketoValidator.validate( xform, { openclinica: true } );
+            res.writeHead( 200, { 'Content-Type': 'application/json' } );
+            res.write( JSON.stringify( { enketo } ) );
+            res.end();
         } );
         req.pipe( req.busboy );
     } else {

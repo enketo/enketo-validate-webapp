@@ -1,6 +1,6 @@
 {
     "name": "enketo-validate-webapp",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "A web interface for the Enketo and ODK XForm validators",
     "main": "index.js",
     "scripts": {
