@@ -44,7 +44,7 @@ function _saveTmpFile( xform ) {
             if ( err ) {
                 reject( err );
             }
-            fs.appendFile( path, xform );
+            fs.appendFile( path, xform, reject );
             resolve( path );
         } );
     } );
