@@ -12,6 +12,7 @@ function validate( xform ) {
 
 function _runODKValidateJar( xformPath ) {
     return new Promise( ( resolve ) => {
+        const start = Date.now();
         execFile( 'java', [ '-jar', `lib/${pkg['ODK validate jar']}`, xformPath ], ( error, stdout, stderr ) => {
             let warnings = [];
             let errors = [];
@@ -27,8 +28,8 @@ function _runODKValidateJar( xformPath ) {
             }
             const matches = pkg[ 'ODK validate jar' ].match( /[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}/ );
             const version = matches.length ? matches[ 0 ] : '';
-
-            resolve( { warnings, errors, version } );
+            const duration = Date.now() - start;
+            resolve( { warnings, errors, version, duration } );
         } );
     } );
 }

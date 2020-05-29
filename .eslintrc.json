@@ -4,27 +4,26 @@
         "node": true
     },
     "extends": "eslint:recommended",
+    "plugins": [
+        "jsdoc"
+    ],
     "parserOptions": {
         "sourceType": "module",
-        "ecmaVersion": 6
+        "ecmaVersion": 8
     },
     "rules": {
-        "indent": [
-            "error",
-            4
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "single"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "no-console": 0
+        "indent": ["warn", 4, { "SwitchCase": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "no-console": ["warn", { "allow": ["error", "deprecate"] }],
+        "eol-last": ["error", "always"],
+        "padding-line-between-statements": ["warn", { "blankLine": "always", "prev": "*", "next": "return" }],
+        "space-before-function-paren": ["error", "never"],
+        "space-in-parens": ["error", "always"],
+        "space-infix-ops": "error",
+        "array-bracket-spacing": ["error", "always"],
+        "no-implied-eval": "error",
+        "object-curly-spacing": ["error", "always"]
     }
 }

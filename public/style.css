@@ -67,12 +67,18 @@ button:disabled {
 
 .result__enketo,
 .result__odk {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     margin: 5px;
     border: 2px solid grey;
     min-width: 320px;
     min-height: 300px;
     padding: 10px;
+}
+
+.result .duration {
+    color: grey;
 }
 
 .valid {

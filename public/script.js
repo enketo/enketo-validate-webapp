@@ -45,8 +45,8 @@ function handleResponse( response ) {
     enketo.result = createMessage( enketo );
     odk.result = createMessage( odk );
 
-    renderResult( document.querySelector( '.result__enketo' ), enketo.errors, enketo.result, enketo.version );
-    renderResult( document.querySelector( '.result__odk' ), odk.errors, odk.result, odk.version );
+    renderResult( document.querySelector( '.result__enketo' ), enketo.errors, enketo.result, enketo.version, enketo.duration );
+    renderResult( document.querySelector( '.result__odk' ), odk.errors, odk.result, odk.version, odk.duration );
 }
 
 function createMessage( result ) {
@@ -58,7 +58,7 @@ function createMessage( result ) {
     return message;
 }
 
-function renderResult( el, errors, content, version ) {
+function renderResult( el, errors, content, version, duration ) {
     if ( !el ) {
         return;
     }
@@ -67,4 +67,5 @@ function renderResult( el, errors, content, version ) {
     el.classList.add( invalid ? 'invalid' : 'valid' );
     el.querySelector( 'pre' ).textContent = content + ( invalid ? '' : 'XForm is valid!' );
     el.querySelector( '.version' ).textContent = version ? ` (v${version})` : '';
+    el.querySelector( 'footer' ).textContent = duration ? `validation time: ${Math.round(duration/10)/100} seconds` : '';
 }

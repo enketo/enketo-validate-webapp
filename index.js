@@ -26,7 +26,9 @@ app.use( '/validate', ( req, res, next ) => {
                 .setEncoding( 'utf8' );
         } );
         req.busboy.on( 'finish', () => {
+            const start = Date.now();
             enketo = enketoValidator.validate( xform );
+            enketo.duration = Date.now() - start; // TODO: THIS CAN BE REMOVED WHEN ENKETO-VALIDATE STARTS INCLUDING THIS
             odkValidator.validate( xform )
                 .then( o => odk = o )
                 .catch( e => {
@@ -48,7 +50,9 @@ app.use( '/validate', ( req, res, next ) => {
                 .setEncoding( 'utf8' );
         } );
         req.busboy.on( 'finish', () => {
+            const start = Date.now();
             enketo = enketoValidator.validate( xform, { openclinica: true } );
+            enketo.duration = Date.now() - start;
             res.writeHead( 200, { 'Content-Type': 'application/json' } );
             res.write( JSON.stringify( { enketo } ) );
             res.end();
@@ -59,5 +63,6 @@ app.use( '/validate', ( req, res, next ) => {
     }
 } );
 
-http.createServer( app ).listen( port );
+const server = http.createServer( app ).listen( port );
+
 console.log( `launched server on port: ${port}` );
