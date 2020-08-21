@@ -1,7 +1,8 @@
 {
     "env": {
         "es6": true,
-        "node": true
+        "browser": false,
+        "node": true,
     },
     "extends": "eslint:recommended",
     "plugins": [
@@ -24,6 +25,6 @@
         "space-infix-ops": "error",
         "array-bracket-spacing": ["error", "always"],
         "no-implied-eval": "error",
-        "object-curly-spacing": ["error", "always"]
+        "object-curly-spacing": ["error", "always"],
     }
 }

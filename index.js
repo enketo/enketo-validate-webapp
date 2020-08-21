@@ -25,22 +25,26 @@ app.use( '/validate', ( req, res, next ) => {
                 .on( 'data', d => xform += d )
                 .setEncoding( 'utf8' );
         } );
-        req.busboy.on( 'finish', () => {
-            const start = Date.now();
-            enketo = enketoValidator.validate( xform );
-            enketo.duration = Date.now() - start; // TODO: THIS CAN BE REMOVED WHEN ENKETO-VALIDATE STARTS INCLUDING THIS
-            odkValidator.validate( xform )
-                .then( o => odk = o )
-                .catch( e => {
-                    console.error( 'something went wrong during ODK Validation', e );
-                    odk.errors = [ e ];
-                } )
-                .then( () => {
-                    res.writeHead( 200, { 'Content-Type': 'application/json' } );
-                    res.write( JSON.stringify( { enketo, odk } ) );
-                    res.end();
-                } );
+        req.busboy.on( 'finish', async () => {
+            try {
+                enketo = await enketoValidator.validate( xform );
+            }
+            catch( e ){
+                console.error( 'something went wrong during Enketo Validation', e );
+                enketo.errors = [ e ];
+            }
+                
+            try {
+                odk = await odkValidator.validate( xform );
+            }
+            catch ( e ){
+                console.error( 'something went wrong during ODK Validation', e );
+                odk.errors = [ e ];
+            }
 
+            res.writeHead( 200, { 'Content-Type': 'application/json' } );
+            res.write( JSON.stringify( { enketo, odk } ) );
+            res.end();
         } );
         req.pipe( req.busboy );
     } else if ( req.busboy && req.url === '/oc' ) {
@@ -49,10 +53,9 @@ app.use( '/validate', ( req, res, next ) => {
                 .on( 'data', d => xform += d )
                 .setEncoding( 'utf8' );
         } );
-        req.busboy.on( 'finish', () => {
-            const start = Date.now();
-            enketo = enketoValidator.validate( xform, { openclinica: true } );
-            enketo.duration = Date.now() - start;
+        req.busboy.on( 'finish', async () => {
+            const enketo = await enketoValidator.validate( xform, { openclinica: true } );
+        
             res.writeHead( 200, { 'Content-Type': 'application/json' } );
             res.write( JSON.stringify( { enketo } ) );
             res.end();
