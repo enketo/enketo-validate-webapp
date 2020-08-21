@@ -1,5 +1,3 @@
-'use strict';
-
 const execFile = require( 'child_process' ).execFile;
 const tmp = require( 'tmp' );
 const fs = require( 'fs' );

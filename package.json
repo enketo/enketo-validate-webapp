@@ -4,7 +4,10 @@
     "description": "A web interface for the Enketo and ODK XForm validators",
     "main": "index.js",
     "scripts": {
-        "start": "node ."
+        "start": "node .",
+        "test": "npm run style-check",
+        "style-fix": "eslint *.js src/**/*.js public/**/*.js --fix",
+        "style-check": "eslint *.js src/**/*.js public/**/*.js"
     },
     "repository": {
         "type": "git",
@@ -28,6 +31,9 @@
         "enketo-validate": "^1.11.1",
         "serve-static": "^1.14.1",
         "tmp": "^0.2.1"
+    },
+    "devDependencies": {
+        "eslint": "^7.7.0"
     },
     "ODK validate jar": "ODK-Validate-v1.14.0.jar"
 }

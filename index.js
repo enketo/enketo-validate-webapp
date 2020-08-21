@@ -1,5 +1,3 @@
-'use strict';
-
 const port = 3000;
 const connect = require( 'connect' );
 const http = require( 'http' );
@@ -25,7 +23,7 @@ app.use( '/validate', ( req, res, next ) => {
                 .on( 'data', d => xform += d )
                 .setEncoding( 'utf8' );
         } );
-        req.busboy.on( 'finish', async () => {
+        req.busboy.on( 'finish', async() => {
             try {
                 enketo = await enketoValidator.validate( xform );
             }
@@ -53,7 +51,7 @@ app.use( '/validate', ( req, res, next ) => {
                 .on( 'data', d => xform += d )
                 .setEncoding( 'utf8' );
         } );
-        req.busboy.on( 'finish', async () => {
+        req.busboy.on( 'finish', async() => {
             const enketo = await enketoValidator.validate( xform, { openclinica: true } );
         
             res.writeHead( 200, { 'Content-Type': 'application/json' } );
@@ -66,6 +64,6 @@ app.use( '/validate', ( req, res, next ) => {
     }
 } );
 
-const server = http.createServer( app ).listen( port );
+http.createServer( app ).listen( port );
 
 console.log( `launched server on port: ${port}` );

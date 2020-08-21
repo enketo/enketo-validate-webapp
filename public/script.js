@@ -25,7 +25,7 @@ function submit( evt ) {
             if ( xhr.status === 200 ) {
                 handleResponse( xhr.response );
             } else if ( xhr.status !== 200 ) {
-                console.log( `Request failed.  Returned status of ${xhr.status}` );
+                console.error( `Request failed.  Returned status of ${xhr.status}` );
             }
             form.classList.remove( 'busy' );
         };
@@ -55,6 +55,7 @@ function createMessage( result ) {
     }
     let message = result.warnings && result.warnings.length ? [ 'Warnings:' ].concat( result.warnings ).concat( '\n\n' ).join( '\n\n' ) : '';
     message += result.errors && result.errors.length ? [ 'Errors:' ].concat( result.errors ).join( '\n\n' ) : '';
+
     return message;
 }
 
@@ -67,5 +68,5 @@ function renderResult( el, errors, content, version, duration ) {
     el.classList.add( invalid ? 'invalid' : 'valid' );
     el.querySelector( 'pre' ).textContent = content + ( invalid ? '' : 'XForm is valid!' );
     el.querySelector( '.version' ).textContent = version ? ` (v${version})` : '';
-    el.querySelector( 'footer' ).textContent = duration ? `validation time: ${Math.round(duration/10)/100} seconds` : '';
+    el.querySelector( 'footer' ).textContent = duration ? `validation time: ${Math.round( duration / 10 ) / 100} seconds` : '';
 }
