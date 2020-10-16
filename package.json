@@ -1,6 +1,6 @@
 {
     "name": "enketo-validate-webapp",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "A web interface for the Enketo and ODK XForm validators",
     "main": "index.js",
     "scripts": {
@@ -28,12 +28,12 @@
     "dependencies": {
         "connect": "^3.7.0",
         "connect-busboy": "0.0.2",
-        "enketo-validate": "^1.11.1",
+        "enketo-validate": "^1.12.0",
         "serve-static": "^1.14.1",
         "tmp": "^0.2.1"
     },
     "devDependencies": {
-        "eslint": "^7.7.0"
+        "eslint": "^7.11.0"
     },
-    "ODK validate jar": "ODK-Validate-v1.14.0.jar"
+    "ODK validate jar": "ODK-Validate-v1.15.0.jar"
 }
