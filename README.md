@@ -4,7 +4,7 @@ ODK XForm Validation web application
 A simple application that provides a web interface for the following [ODK XForm](https://opendatakit.github.io/xforms-spec/) validators:
 
 1. [Enketo Validate](https://github.com/enketo/enketo-validate)
-2. [ODK Validate](http://docs.opendatakit.org/validate/)
+2. [ODK Validate](https://docs.getodk.org/validate/)
 
 See live here: [validate.enketo.org](https://validate.enketo.org)
 
@@ -12,8 +12,8 @@ This app is not production-ready and is not meant to be. It was meant as tool fo
 
 ### Pre-requisites
 
-1. NodeJS version as required by [Enketo Validate](https://github.com/enketo/enketo-validate)
-2. Java version as required by [ODK Validate](http://docs.opendatakit.org/validate/)
+1. NodeJS and NPM version as required by [Enketo Validate](https://github.com/enketo/enketo-validate)
+2. Java version as required by [ODK Validate](https://docs.getodk.org/validate/)
 
 ### Install
 
