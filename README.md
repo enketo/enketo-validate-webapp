@@ -18,9 +18,9 @@ This app is not production-ready and is not meant to be. It was meant as tool fo
 ### Install
 
 1. Clone repo
-2. Run `npm install`
+2. Run `yarn install`
 
 ### Use
 
-1. `npm start` 
+1. `node .` 
 2. go to http://localhost:3000
