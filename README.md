@@ -14,6 +14,7 @@ This app is not production-ready and is not meant to be. It was meant as tool fo
 
 1. NodeJS and NPM version as required by [Enketo Validate](https://github.com/enketo/enketo-validate)
 2. Java version as required by [ODK Validate](https://docs.getodk.org/validate/)
+3. Yarn 1 ("classic")
 
 ### Install
 
