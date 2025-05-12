@@ -2,16 +2,13 @@
     "name": "enketo-validate-webapp",
     "version": "2.0.0",
     "description": "A web interface for the Enketo and ODK XForm validators",
+    "homepage": "https://validate.enketo.org",
     "main": "index.js",
     "scripts": {
         "start": "node .",
         "test": "npm run style-check",
         "style-fix": "eslint *.js src/**/*.js public/**/*.js --fix",
         "style-check": "eslint *.js src/**/*.js public/**/*.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/enketo/enketo-validate-webapp.git"
     },
     "resolutions": {
         "nan": "^2.17.0",
@@ -24,12 +21,6 @@
         "XForm",
         "validator"
     ],
-    "author": "Martijn van de Rijdt",
-    "license": "Apache-2.0",
-    "bugs": {
-        "url": "https://github.com/enketo/enketo-validate-webapp/issues"
-    },
-    "homepage": "https://github.com/enketo/enketo-validate-webapp#readme",
     "dependencies": {
         "connect": "^3.7.0",
         "connect-busboy": "1.0.0",
@@ -41,8 +32,28 @@
         "eslint": "^8.52.0"
     },
     "ODK validate jar": "ODK-Validate-v1.18.0.jar",
+    "repository": "https://github.com/enketo/enketo-validate-webapp",
+    "license": "Apache-2.0",
+    "author": {
+        "name": "KoboToolbox",
+        "email": "enketo@kobotoolbox.org",
+        "url": "https://www.kobotoolbox.org/about-us/meet-the-team"
+    },
+    "contributors": [
+        {
+            "name": "ODK",
+            "email": "support@getodk.org",
+            "url": "https://getodk.org/about/team"
+        },
+        {
+            "name": "Martijn van de Rijdt",
+            "email": "martijn@enketo.org",
+            "url": "https://github.com/MartijnR"
+        }
+    ],
     "volta": {
         "node": "20.5.1",
         "yarn": "1.22.19"
-    }
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
